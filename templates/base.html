@@ -6,6 +6,14 @@
     <title>{% block title %}LCEList{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <meta property="og:site_name" content="LCEList">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{% block og_title %}LCEList{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}A Minecraft Legacy Console Edition mod sharing site.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}https://cdn.lcelist.xyz/images/default_thumbnail.png{% endblock %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta name="theme-color" content="#f9a8d4">
+
     <style>
         .markdown h1 { font-size: 1.875rem; font-weight: 700; margin-bottom: 0.75rem; }
         .markdown h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }

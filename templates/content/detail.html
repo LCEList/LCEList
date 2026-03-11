@@ -2,6 +2,10 @@
 {% load markdownify %}
 {% block title %}{{ item.title }} — LCEList{% endblock %}
 
+{% block og_title %}{{ item.title }} — LCEList{% endblock %}
+{% block og_description %}{{ item.tagline }}{% endblock %}
+{% block og_image %}{{ item.thumbnail.url }}{% endblock %}
+
 {% block content %}
 
 <div class="flex justify-between h-28">
