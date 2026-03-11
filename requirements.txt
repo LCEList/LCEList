@@ -7,6 +7,7 @@ Django==6.0.3
 django-markdownify==0.9.6
 django-storages==1.14.6
 django-taggit==6.1.0
+dotenv==0.9.9
 gunicorn==25.1.0
 jmespath==1.1.0
 Markdown==3.10.2
@@ -15,6 +16,7 @@ pillow==12.1.1
 psycopg2-binary==2.9.11
 python-dateutil==2.9.0.post0
 python-decouple==3.8
+python-dotenv==1.2.2
 s3transfer==0.16.0
 six==1.17.0
 sqlparse==0.5.5
