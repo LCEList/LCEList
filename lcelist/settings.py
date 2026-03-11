@@ -5,7 +5,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
-DEBUG = os.environ.get('DEBUG', default=True, cast=bool)
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', default='localhost').split(',')
 
 
@@ -71,7 +71,7 @@ DATABASES = {
 }
 
 # Storage
-USE_R2 = os.environ.get('USE_R2', default=False, cast=bool)
+USE_R2 = os.environ.get('USE_R2', 'False') == 'True'
 
 if USE_R2:
     STORAGES = {
