@@ -109,6 +109,10 @@ class Content(models.Model):
         Content.objects.filter(pk=self.pk).update(
             downloads=models.F('downloads') + 1
         )
+    
+    @property
+    def version_loaders(self):
+        return set(v.loader for v in self.versions.all() if v.loader)
 
     class Meta:
         ordering = ['-created_at']

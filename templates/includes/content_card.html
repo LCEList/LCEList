@@ -16,7 +16,7 @@
                 <p class="text-gray-400 text-sm mt-1 line-clamp-2">{{ item.tagline }}</p>
             </div>
             <div class="flex gap-2 mt-2 flex-wrap">
-                {% for loader in item.loaders.all %}
+                {% for loader in item.version_loaders %}
                     <span class="text-xs bg-gray-800 text-gray-400 px-2 py-0.5 rounded">{{ loader.name }}</span>
                 {% endfor %}
                 {% if item.theme %}
