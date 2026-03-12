@@ -41,7 +41,7 @@ def browse(request):
 
     loader_slug = request.GET.get('loader', '')
     if loader_slug:
-        items = items.filter(loaders__slug=loader_slug)
+        items = items.filter(versions__loader__slug=loader_slug).distinct()
 
     sort = request.GET.get('sort', 'downloads')
     if sort == 'downloads':
