@@ -2,13 +2,32 @@
 {% block title %}{{ profile_user.username }} — LCEList{% endblock %}
 
 {% block content %}
-<h1 class="text-2xl font-bold mb-2">{{ profile_user.username }}</h1>
+<div class="flex items-start gap-6 mb-8">
+    <img src="{{ profile_user.avatar.url }}" class="w-24 h-24 rounded-full object-cover flex-shrink-0">
+    <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-4 mb-2">
+            <h1 class="text-2xl font-bold">{{ profile_user.username }}</h1>
+            {% if user == profile_user %}
+                <a href="{% url 'users:edit_profile' %}" class="bg-gray-800 border border-gray-700 hover:border-pink-300 text-gray-300 text-sm px-3 py-1 rounded">
+                    Edit Profile
+                </a>
+            {% endif %}
+        </div>
+        {% if profile_user.bio %}
+            <p class="text-gray-400 text-sm mb-3">{{ profile_user.bio }}</p>
+        {% endif %}
+        <div class="flex gap-6 text-sm text-gray-500">
+            <span><span class="text-gray-100 font-semibold">{{ uploads.count }}</span> projects</span>
+            <span><span class="text-gray-100 font-semibold">{{ total_downloads }}</span> downloads</span>
+            <span>Joined <span class="text-gray-100">{{ profile_user.date_joined|timesince }} ago</span></span>
+        </div>
+    </div>
+</div>
 
 <h2 class="text-xl font-bold mb-4">Content</h2>
 {% if uploads %}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {% for item in uploads %}
-            {% include 'includes/content_card_small.html' with item=item %}
+            {% include 'includes/content_card.html' with item=item %}
         {% endfor %}
     </div>
 {% else %}

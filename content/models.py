@@ -60,7 +60,7 @@ class Content(models.Model):
     thumbnail = models.ImageField(upload_to='thumbnails/', blank=True, null=True, default='images/item_icon.png', validators=[validate_image_size])
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         null=True,
         related_name='content',
     )
