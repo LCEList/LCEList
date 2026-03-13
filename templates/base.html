@@ -38,8 +38,26 @@
                 <a href="{% url 'content:browse' %}" class="hover:text-pink-300">Browse</a>
                 {% if user.is_authenticated %}
                     <a href="{% url 'content:upload' %}" class="hover:text-pink-300">Upload</a>
-                    <a href="{% url 'users:profile' user.username %}" class="flex gap-2 items-center hover:text-pink-300">
-                        {{ user.username }}<img src="{{ user.avatar.url }}" class="w-8 h-8 rounded-full object-cover"></a>
+                    <div class="relative group">
+                        <a href="{% url 'users:profile' user.username %}" class="flex gap-2 items-center hover:text-pink-300">
+                            <img src="{{ user.avatar.url }}" class="w-8 h-8 rounded-full object-cover">
+                        </a>
+                        <div class="absolute right-0 hidden group-hover:block z-50">
+                            <div class="bg-gray-900 border border-gray-800 rounded-lg shadow-lg w-40 py-1">
+                                <a href="{% url 'users:profile' user.username %}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 rounded-t-lg">
+                                    Profile
+                                </a>
+                                <div class="border-t border-gray-800">
+                                    <form method="post" action="{% url 'users:logout' %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="w-full text-left px-4 py-2 text-sm text-red-300 hover:bg-red-600 rounded-b-lg">
+                                            Logout
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 {% else %}
                     <a href="{% url 'users:login' %}" class="hover:text-pink-300">Login</a>
                     <a href="{% url 'users:register' %}" class="bg-pink-300 text-gray-900 px-4 py-1.5 rounded font-semibold hover:bg-pink-200">Register</a>
