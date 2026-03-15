@@ -56,7 +56,7 @@ class Content(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, blank=True)
     tagline = models.CharField(max_length=200, blank=True)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     thumbnail = models.ImageField(upload_to='thumbnails/', blank=True, null=True, default='images/item_icon.png', validators=[validate_image_size])
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
