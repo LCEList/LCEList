@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'storages',
     'content',
     'users',
-    'api',
 ]
 
 MIDDLEWARE = [
