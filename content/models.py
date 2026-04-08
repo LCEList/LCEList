@@ -171,3 +171,11 @@ class Report(models.Model):
 
     class Meta:
         unique_together = ('content', 'reporter')
+
+class SiteMessage(models.Model):
+    message = models.TextField()
+    active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.message[:50]

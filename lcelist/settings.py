@@ -21,12 +21,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'markdownify.apps.MarkdownifyConfig',
+    'rest_framework',
+    'django_filters',
 
     #custom
     'taggit',
     'storages',
     'content',
     'users',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -50,9 +53,12 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'content.context_processors.site_messages',
             ],
         },
     },
@@ -138,6 +144,17 @@ MARKDOWNIFY = {
             'http', 'https',
         ],
     }
+}
+
+# Rest settings
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
 }
 
 # Internationalization

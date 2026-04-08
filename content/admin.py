@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Loader, Category, Content, ContentVersion, Screenshot, Theme, Report
+from .models import Loader, Category, Content, ContentVersion, Screenshot, Theme, Report, SiteMessage
 
 class ContentVersionInline(admin.TabularInline):
     model = ContentVersion
@@ -40,3 +40,8 @@ class ReportAdmin(admin.ModelAdmin):
     list_display = ['content', 'reporter', 'reason', 'created_at', 'resolved']
     list_editable = ['resolved']
     list_filter = ['reason', 'resolved']
+
+@admin.register(SiteMessage)
+class SiteMessageAdmin(admin.ModelAdmin):
+    list_display = ("message", "active", "created_at")
+    list_filter = ("active",)
