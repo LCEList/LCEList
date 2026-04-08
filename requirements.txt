@@ -4,9 +4,11 @@ bleach==6.3.0
 boto3==1.42.64
 botocore==1.42.64
 Django==6.0.3
+django-filter==25.2
 django-markdownify==0.9.6
 django-storages==1.14.6
 django-taggit==6.1.0
+djangorestframework==3.17.1
 dotenv==0.9.9
 gunicorn==25.1.0
 jmespath==1.1.0
