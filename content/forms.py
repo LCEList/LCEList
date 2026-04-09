@@ -46,9 +46,9 @@ class ContentEditForm(forms.ModelForm):
         category = None
         if self.instance and self.instance.category_id:
             category = self.instance.category
-        elif 'category' in self.data:
+        elif 'category' in self.data and self.data['category']:
             try:
-                category = Category.objects.get(pl=self.data['category'])
+                category = Category.objects.get(pk=self.data['category'])
             except Category.DoesNotExist:
                 pass
 
