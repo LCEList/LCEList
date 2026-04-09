@@ -11,7 +11,7 @@ from .validators import validate_upload_size, validate_image_type
 
 def index(request):
     featured = Content.objects.filter(is_approved=True, is_featured=True)[:6]
-    recent = Content.objects.filter(is_approved=True).order_by('-created_at')[:12]
+    recent = Content.objects.filter(is_approved=True).order_by('-created_at')[:6]
     return render(request, 'content/index.html', {
         'featured': featured,
         'recent': recent,
