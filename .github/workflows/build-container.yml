@@ -1,9 +1,12 @@
 name: Build container image
 
 on:
-  schedule:
-    - cron: '0 12 * * 1'
+  push:
+    branches:
+      - main
   workflow_dispatch:
+  schedule: # rebuild the image to include latest OS security packages
+    - cron: '00 12 * * MON'
 
 env:
   # Will use docker.io for Docker Hub if empty
