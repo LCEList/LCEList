@@ -18,7 +18,7 @@ def index(request):
     })
 
 def browse(request):
-    items = Content.objects.filter(is_approved=True)
+    items = Content.objects.filter(is_approved=True, versions__isnull=False).distinct()
     categories = Category.objects.all()
 
     category_slug = request.GET.get('category', 'mods')
